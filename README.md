@@ -10,8 +10,6 @@
 
 ### Инструкция по настройке проекта:
 1. Склонируй репозиторий
-   - sudo apt update
-   - sudo apt install git
    - git clone https://github.com/MikkaPo/Votings.git
    - cd votings_MikkaPo
 2. Создать виртуальное окружение (через settings -> project "votings" -> project interpreter)
