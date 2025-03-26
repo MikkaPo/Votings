@@ -9,16 +9,20 @@
 - SQLite
 
 ### Инструкция по настройке проекта:
-1. Склонировать проект
-2. Открыть проект с наcтройками по умолчанию
-3. Создать виртуальное окружение (через settings -> project "votings" -> project interpreter)
-4. Открыть терминал, проверить, что виртуальное окружение активировано.
-5. Обновить pip:
-   ```bash
-   pip install --upgrade pip
-   ```
-6. Установить в виртуальное окружение необходимые пакеты: 
+1.Склонируй репозиторий
+   sudo apt update
+   sudo apt install git
+   git clone [https://github.com/stealpork/vpn_lin](https://github.com/MikkaPo/Votings.git)
+   cd votings_MikkaPo
+2. Создать виртуальное окружение (через settings -> project "votings" -> project interpreter)
+3. Открыть терминал, проверить, что виртуальное окружение активировано.
+4. Установить в виртуальное окружение необходимые пакеты: 
    ```bash
    pip install -r requirements.txt
    ```
+5. Запусти сервер и перейди по предложенной ссылке
+      ```bash
+   python manage.py runserver
+   ```
+6. Готово, можешь пользоваться
    
