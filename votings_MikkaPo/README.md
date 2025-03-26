@@ -9,7 +9,7 @@
 - SQLite
 
 ### Инструкция по настройке проекта:
-1.Склонируй репозиторий
+1. Склонируй репозиторий
    sudo apt update
    sudo apt install git
    git clone [https://github.com/stealpork/vpn_lin](https://github.com/MikkaPo/Votings.git)
