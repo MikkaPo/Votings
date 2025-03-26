@@ -1,0 +1,73 @@
+{% extends "base/base.html" %}
+
+{% block title %}Создать пост{% endblock %}
+
+{% block content %}
+<div class="second-block container mt-4 rounded-3" style="width: 700px; height: auto;">
+    <div class="container text-center ">
+        <div>
+            <form action="/post_creation/" method="post">
+                <div class="text-center">
+                    {% csrf_token %} 
+                </div style="box-sizing: border-box">
+                <div class="name-text">
+                    {{ post_form.as_p }}
+                </div>
+                
+
+                <div id="form-container-list">
+                    {{ voting_forms.management_form }}
+                        {% for form in voting_forms %}
+                            <div id="form-container">{{ form.as_p }}</div>
+                        {% endfor %}
+                    <div id="empty-form" class="hidden">{{ voting_forms.empty_form.as_p }}</div>
+                </div>
+
+                <div class="row align-items-start line-height"> 
+                    <button type="button" id="add-form" class=" col name-text answer-button rounded-3 text-light w-50">добавить вариант</button>
+                
+                    <button type="submit" class=" col name-text answer-button rounded-3 text-light" style="width: 316px; height: auto;">создать пост</button>
+                </div>
+                <br />
+            </form>
+        </div>
+    </div>    
+</div>
+
+<script>
+
+    const addVariantBtn = document.getElementById('add-form')
+    
+    addVariantBtn.addEventListener('click', add_new_form)
+
+    function add_new_form(args)
+    {
+        // Не отправлять данные на сервер, при создании формы.
+        // Это не должно происходить, но на всякий случай.
+        if (event)
+        {
+            event.preventDefault()
+        }
+        // Создаём новую форму
+        const totalNewForms = document.getElementById('id_vote_variants-TOTAL_FORMS')
+        const currentIngridientsForms = document.getElementsByClassName('form-container')
+        const formCopyTarget = document.getElementById('form-container-list')
+        const copyEmptyForm = document.getElementById('empty-form').cloneNode(true)
+        
+        let currentFormsCount = currentIngridientsForms.length
+
+        copyEmptyForm.setAttribute('class', 'form-container')
+        copyEmptyForm.setAttribute('id', `form-${currentFormsCount}`)
+        currentFormsCount++
+
+        const regex = new RegExp('__prefix__', 'g')
+
+        copyEmptyForm.innerHTML = copyEmptyForm.innerHTML.replace(regex, currentFormsCount)
+
+        totalNewForms.setAttribute('value', currentFormsCount + 1)
+
+        formCopyTarget.append(copyEmptyForm)
+    }
+
+</script>
+{% endblock %}
